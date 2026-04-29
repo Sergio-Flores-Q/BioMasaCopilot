@@ -1,0 +1,6 @@
+body { background: #f8f9fa; }
+.logo { height: 28px; }
+.map-card { height: 78vh; border-radius: 6px; overflow: hidden; }
+.card { border-radius: 8px; }
+.table-responsive { max-height: 40vh; overflow:auto; }
+.container { max-width: 1100px; }

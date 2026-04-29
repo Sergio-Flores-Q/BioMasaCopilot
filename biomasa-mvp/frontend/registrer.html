@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>BioMasa - Registrar Cliente</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html"><img src="assets/logo.png" class="logo me-2">BioMasa</a>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link active" href="register.html">Registrar Cliente</a></li>
+        <li class="nav-item"><a class="nav-link" href="points.html">Puntos de Retiro</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container my-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Formulario de registro de clientes</h5>
+        <p class="text-muted">Los campos marcados con * son obligatorios. Las validaciones siguen reglas de la industria para recolección y seguridad.</p>
+
+        <form id="clientForm" novalidate>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Nombre completo *</label>
+              <input id="clientName" class="form-control" required>
+              <div class="invalid-feedback">Ingrese nombre completo.</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Documento de identificación *</label>
+              <input id="clientId" class="form-control" placeholder="RUT o ID" required>
+              <div class="form-text">Formato: RUT chileno o ID local. Sin puntos, con guion opcional.</div>
+              <div class="invalid-feedback">Documento inválido.</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Teléfono de contacto *</label>
+              <input id="clientPhone" class="form-control" placeholder="+56 9 1234 5678" required>
+              <div class="invalid-feedback">Teléfono inválido. Use formato internacional o local.</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Correo electrónico</label>
+              <input id="clientEmail" type="email" class="form-control" placeholder="ejemplo@dominio.cl">
+              <div class="invalid-feedback">Correo inválido.</div>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label">Dirección del predio *</label>
+              <input id="clientAddress" class="form-control" required>
+              <div class="invalid-feedback">Ingrese dirección o referencia.</div>
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label">Tipo de predio *</label>
+              <select id="clientPropertyType" class="form-select" required>
+                <option value="">Seleccionar</option>
+                <option value="Agrícola">Agrícola</option>
+                <option value="Forestal">Forestal</option>
+                <option value="Residencial">Residencial</option>
+                <option value="Otro">Otro</option>
+              </select>
+              <div class="invalid-feedback">Seleccione tipo de predio.</div>
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label">Volumen estimado de residuos *</label>
+              <select id="clientVolume" class="form-select" required>
+                <option value="">Seleccionar</option>
+                <option value="<50kg">&lt;50 kg</option>
+                <option value="50-200kg">50–200 kg</option>
+                <option value="200-500kg">200–500 kg</option>
+                <option value=">500kg">&gt;500 kg</option>
+              </select>
+              <div class="form-text">Usado para planificación logística.</div>
+              <div class="invalid-feedback">Seleccione volumen estimado.</div>
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label">Preferencia de recolección</label>
+              <select id="clientPickupPref" class="form-select">
+                <option value="Cualquiera">Cualquiera</option>
+                <option value="Mañana">Mañana</option>
+                <option value="Tarde">Tarde</option>
+                <option value="FinesSemana">Fines de semana</option>
+              </select>
+            </div>
+
+            <div class="col-12">
+              <div class="form-check">
+                <input id="clientConsent" class="form-check-input" type="checkbox" required>
+                <label class="form-check-label">Autorizo retiro de residuos y tratamiento para producción de briquetas *</label>
+                <div class="invalid-feedback">Debe autorizar para continuar.</div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="d-flex gap-2">
+                <button id="saveClient" class="btn btn-success" type="submit">Registrar Cliente</button>
+                <button id="clearClient" class="btn btn-outline-secondary" type="button">Limpiar</button>
+                <a class="btn btn-outline-primary" href="points.html">Ir a Puntos de Retiro</a>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <hr class="my-3">
+
+        <h6>Clientes registrados</h6>
+        <div class="table-responsive">
+          <table id="clientsTable" class="table table-sm table-striped">
+            <thead class="table-success">
+              <tr><th>Nombre</th><th>Documento</th><th>Teléfono</th><th>Dirección</th><th>Volumen</th><th>Acciones</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="text-center py-3 text-muted">© BioMasa</footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/register.js"></script>
+</body>
+</html>
